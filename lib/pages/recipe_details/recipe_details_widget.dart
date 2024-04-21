@@ -2,12 +2,14 @@ import '/backend/supabase/supabase.dart';
 import '/components/ingredient_card/ingredient_card_widget.dart';
 import '/components/rate_recipe_bottom_sheet_widget.dart';
 import '/components/tag/tag_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:just_audio/just_audio.dart';
 import 'recipe_details_model.dart';
 export 'recipe_details_model.dart';
@@ -24,15 +26,33 @@ class RecipeDetailsWidget extends StatefulWidget {
   State<RecipeDetailsWidget> createState() => _RecipeDetailsWidgetState();
 }
 
-class _RecipeDetailsWidgetState extends State<RecipeDetailsWidget> {
+class _RecipeDetailsWidgetState extends State<RecipeDetailsWidget>
+    with TickerProviderStateMixin {
   late RecipeDetailsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => RecipeDetailsModel());
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -232,7 +252,8 @@ class _RecipeDetailsWidgetState extends State<RecipeDetailsWidget> {
                                 .ingredientId!,
                           );
                         }),
-                      );
+                      ).animateOnPageLoad(
+                          animationsMap['columnOnPageLoadAnimation']!);
                     },
                   ),
                 ),

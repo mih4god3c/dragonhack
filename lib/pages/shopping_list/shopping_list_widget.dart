@@ -1,10 +1,12 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/shopping_list_item/shopping_list_item_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'shopping_list_model.dart';
 export 'shopping_list_model.dart';
@@ -16,15 +18,33 @@ class ShoppingListWidget extends StatefulWidget {
   State<ShoppingListWidget> createState() => _ShoppingListWidgetState();
 }
 
-class _ShoppingListWidgetState extends State<ShoppingListWidget> {
+class _ShoppingListWidgetState extends State<ShoppingListWidget>
+    with TickerProviderStateMixin {
   late ShoppingListModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => ShoppingListModel());
+
+    animationsMap.addAll({
+      'staggeredViewOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -183,7 +203,8 @@ class _ShoppingListWidgetState extends State<ShoppingListWidget> {
                           ),
                         );
                       },
-                    );
+                    ).animateOnPageLoad(
+                        animationsMap['staggeredViewOnPageLoadAnimation']!);
                   },
                 ),
               ),

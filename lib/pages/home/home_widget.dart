@@ -5,11 +5,13 @@ import '/components/big_text_card_chart/big_text_card_chart_widget.dart';
 import '/components/big_text_card_progress/big_text_card_progress_widget.dart';
 import '/components/capture_bottom_sheet_widget.dart';
 import '/components/shopping_list_item/shopping_list_item_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'home_model.dart';
 export 'home_model.dart';
 
@@ -20,15 +22,32 @@ class HomeWidget extends StatefulWidget {
   State<HomeWidget> createState() => _HomeWidgetState();
 }
 
-class _HomeWidgetState extends State<HomeWidget> {
+class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   late HomeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => HomeModel());
+
+    animationsMap.addAll({
+      'listViewOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -930,7 +949,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                 ),
                                                               );
                                                             },
-                                                          );
+                                                          ).animateOnPageLoad(
+                                                              animationsMap[
+                                                                  'listViewOnPageLoadAnimation']!);
                                                         },
                                                       ),
                                                     ),

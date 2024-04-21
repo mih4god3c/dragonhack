@@ -2,11 +2,13 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/food_item/food_item_widget.dart';
 import '/components/inventory_item_bottom_sheet_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'inventory_model.dart';
 export 'inventory_model.dart';
 
@@ -17,10 +19,13 @@ class InventoryWidget extends StatefulWidget {
   State<InventoryWidget> createState() => _InventoryWidgetState();
 }
 
-class _InventoryWidgetState extends State<InventoryWidget> {
+class _InventoryWidgetState extends State<InventoryWidget>
+    with TickerProviderStateMixin {
   late InventoryModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -29,6 +34,57 @@ class _InventoryWidgetState extends State<InventoryWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'listViewOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'columnOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'columnOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'listViewOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -345,7 +401,8 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                 ),
                                               );
                                             },
-                                          );
+                                          ).animateOnPageLoad(animationsMap[
+                                              'listViewOnPageLoadAnimation1']!);
                                         },
                                       ),
                                     ),
@@ -499,7 +556,8 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                   ),
                                 ),
                               ],
-                            ),
+                            ).animateOnPageLoad(
+                                animationsMap['columnOnPageLoadAnimation1']!),
                           ),
                         ),
                       if (inventoryInventoryExtendedRowList
@@ -645,7 +703,8 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                   ),
                                 ),
                               ],
-                            ),
+                            ).animateOnPageLoad(
+                                animationsMap['columnOnPageLoadAnimation2']!),
                           ),
                         ),
                       if (inventoryInventoryExtendedRowList
@@ -784,7 +843,8 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                 ),
                                               );
                                             },
-                                          );
+                                          ).animateOnPageLoad(animationsMap[
+                                              'listViewOnPageLoadAnimation2']!);
                                         },
                                       ),
                                     ),
