@@ -6,6 +6,16 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue1;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue2;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue3;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue4;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue5;
   // State field(s) for Switch widget.
   bool? switchValue;
 

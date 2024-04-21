@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/components/food_add_bottom_sheet_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -117,7 +118,9 @@ class _CaptureBottomSheetWidgetState extends State<CaptureBottomSheetWidget> {
                     color: FlutterFlowTheme.of(context).blueFront,
                     size: 40.0,
                   ),
+                  showLoadingIndicator: true,
                   onPressed: () async {
+                    await OpenAIChatGPTGroup.imageRecognitionCall.call();
                     Navigator.pop(context);
                     await showModalBottomSheet(
                       isScrollControlled: true,

@@ -48,7 +48,7 @@ class _InventoryItemBottomSheetWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: double.infinity,
+      height: 400.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primaryBackground,
         borderRadius: const BorderRadius.only(
@@ -89,20 +89,9 @@ class _InventoryItemBottomSheetWidgetState
           return Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                child: Container(
-                  width: 50.0,
-                  height: 4.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-              ),
               Container(
                 width: double.infinity,
-                height: 400.0,
+                height: MediaQuery.sizeOf(context).height * 1.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primaryBackground,
                   borderRadius: const BorderRadius.only(
@@ -194,7 +183,7 @@ class _InventoryItemBottomSheetWidgetState
                                             .quantity,
                                       ),
                                       focusNode: _model.textFieldFocusNode,
-                                      autofocus: true,
+                                      autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Quantity',

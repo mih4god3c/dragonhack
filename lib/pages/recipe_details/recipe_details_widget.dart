@@ -155,6 +155,7 @@ class _RecipeDetailsWidgetState extends State<RecipeDetailsWidget> {
                             persons: recipeDetailsRecipesRow.persons,
                             duration: recipeDetailsRecipesRow.duration,
                             isReady: false,
+                            show: false,
                           ),
                         ),
                       ),

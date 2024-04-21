@@ -197,7 +197,7 @@ class _TagWidgetState extends State<TagWidget> with TickerProviderStateMixin {
               size: 24.0,
             ),
           ),
-        if (!widget.isReady! && widget.show)
+        if (widget.show == true)
           FaIcon(
             FontAwesomeIcons.exclamationCircle,
             color: FlutterFlowTheme.of(context).error,

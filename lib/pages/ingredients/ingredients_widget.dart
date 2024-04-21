@@ -1380,8 +1380,8 @@ class _IngredientsWidgetState extends State<IngredientsWidget> {
                               content: Text(
                                 'Ingredients added to shopping list!',
                                 style: TextStyle(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
                                 ),
                               ),
                               duration: const Duration(milliseconds: 4000),

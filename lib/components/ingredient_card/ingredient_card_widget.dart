@@ -170,22 +170,7 @@ class _IngredientCardWidgetState extends State<IngredientCardWidget> {
                 });
               },
             ),
-          FlutterFlowIconButton(
-            borderColor: FlutterFlowTheme.of(context).primary,
-            borderRadius: 20.0,
-            borderWidth: 1.0,
-            buttonSize: 2.0,
-            fillColor: FlutterFlowTheme.of(context).accent1,
-            icon: Icon(
-              Icons.add,
-              color: FlutterFlowTheme.of(context).primaryBackground,
-              size: 24.0,
-            ),
-            onPressed: () {
-              print('IconButton pressed ...');
-            },
-          ),
-        ],
+        ].addToEnd(const SizedBox(width: 8.0)),
       ),
     );
   }

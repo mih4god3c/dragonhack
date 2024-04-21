@@ -121,7 +121,7 @@ class _ShoppingListWidgetState extends State<ShoppingListWidget> {
               elevation: 0.0,
             ),
             body: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 15.0, 16.0, 16.0),
               child: Container(
                 width: double.infinity,
                 height: MediaQuery.sizeOf(context).height * 1.0,

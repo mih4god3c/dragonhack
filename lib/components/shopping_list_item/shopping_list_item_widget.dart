@@ -57,7 +57,7 @@ class _ShoppingListItemWidgetState extends State<ShoppingListItemWidget> {
             color: FlutterFlowTheme.of(context).primaryBackground,
             boxShadow: [
               BoxShadow(
-                blurRadius: 10.0,
+                blurRadius: 4.0,
                 color: FlutterFlowTheme.of(context).customColor3,
                 offset: const Offset(
                   0.0,

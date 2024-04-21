@@ -15,6 +15,7 @@ class OpenAIChatGPTGroup {
     'Content-Type': 'application/json',
   };
   static SendFullPromptCall sendFullPromptCall = SendFullPromptCall();
+  static ImageRecognitionCall imageRecognitionCall = ImageRecognitionCall();
 }
 
 class SendFullPromptCall {
@@ -59,6 +60,26 @@ class SendFullPromptCall {
         response,
         r'''$.data''',
       ));
+}
+
+class ImageRecognitionCall {
+  Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Image recognition',
+      apiUrl: '${OpenAIChatGPTGroup.baseUrl}/image-recognition',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 /// End OpenAI ChatGPT Group Code

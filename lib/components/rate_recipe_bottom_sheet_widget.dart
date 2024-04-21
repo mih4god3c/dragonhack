@@ -242,7 +242,7 @@ class _RateRecipeBottomSheetWidgetState
                                       ),
                                       unselectedWidgetColor:
                                           FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                              .primaryBackground,
                                     ),
                                     child: Checkbox(
                                       value: _model.checkboxValueMap[
@@ -256,12 +256,12 @@ class _RateRecipeBottomSheetWidgetState
                                       side: BorderSide(
                                         width: 2,
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
+                                            .primaryBackground,
                                       ),
                                       activeColor:
                                           FlutterFlowTheme.of(context).primary,
                                       checkColor: FlutterFlowTheme.of(context)
-                                          .primaryText,
+                                          .primaryBackground,
                                     ),
                                   ),
                                 ],

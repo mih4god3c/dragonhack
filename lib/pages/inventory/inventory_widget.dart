@@ -310,7 +310,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                                 height: MediaQuery.sizeOf(
                                                                             context)
                                                                         .height *
-                                                                    0.4,
+                                                                    0.55,
                                                                 child:
                                                                     InventoryItemBottomSheetWidget(
                                                                   inventoryId:
@@ -459,7 +459,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                                           .sizeOf(
                                                                               context)
                                                                       .height *
-                                                                  0.4,
+                                                                  0.55,
                                                               child:
                                                                   InventoryItemBottomSheetWidget(
                                                                 inventoryId:
@@ -605,7 +605,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                                           .sizeOf(
                                                                               context)
                                                                       .height *
-                                                                  0.4,
+                                                                  0.55,
                                                               child:
                                                                   InventoryItemBottomSheetWidget(
                                                                 inventoryId:
@@ -751,7 +751,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                                           .sizeOf(
                                                                               context)
                                                                       .height *
-                                                                  0.4,
+                                                                  0.55,
                                                               child:
                                                                   InventoryItemBottomSheetWidget(
                                                                 inventoryId:
@@ -898,7 +898,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                                           .sizeOf(
                                                                               context)
                                                                       .height *
-                                                                  0.4,
+                                                                  0.55,
                                                               child:
                                                                   InventoryItemBottomSheetWidget(
                                                                 inventoryId:
@@ -1045,7 +1045,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                                           .sizeOf(
                                                                               context)
                                                                       .height *
-                                                                  0.4,
+                                                                  0.55,
                                                               child:
                                                                   InventoryItemBottomSheetWidget(
                                                                 inventoryId:
@@ -1191,7 +1191,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                                           .sizeOf(
                                                                               context)
                                                                       .height *
-                                                                  0.4,
+                                                                  0.55,
                                                               child:
                                                                   InventoryItemBottomSheetWidget(
                                                                 inventoryId:
@@ -1337,7 +1337,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                                           .sizeOf(
                                                                               context)
                                                                       .height *
-                                                                  0.4,
+                                                                  0.55,
                                                               child:
                                                                   InventoryItemBottomSheetWidget(
                                                                 inventoryId:
@@ -1483,7 +1483,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                                           .sizeOf(
                                                                               context)
                                                                       .height *
-                                                                  0.4,
+                                                                  0.55,
                                                               child:
                                                                   InventoryItemBottomSheetWidget(
                                                                 inventoryId:
