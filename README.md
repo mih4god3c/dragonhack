@@ -57,6 +57,8 @@ _Sorry for the long description :D_
 - [Recipes I](https://api-ninjas.com/api/recipe)
 - [Recipes II](https://www.themealdb.com/api.php)
 - [Recipes III](https://spoonacular.com/food-api/docs)
+- [OneSignal](https://documentation.onesignal.com/docs/onesignal-api)
+- [Supabase](https://supabase.com/)
 
 ## Mobile functionality
 
