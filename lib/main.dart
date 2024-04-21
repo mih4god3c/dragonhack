@@ -82,12 +82,12 @@ class _MyAppState extends State<MyApp> {
           interactive: true,
           thumbColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.dragged)) {
-              return const Color(0xffcbf3f0);
+              return const Color(0xffe0e0e0);
             }
             if (states.contains(MaterialState.hovered)) {
-              return const Color(0xffcbf3f0);
+              return const Color(0xffe0e0e0);
             }
-            return const Color(0xffcbf3f0);
+            return const Color(0xffe0e0e0);
           }),
         ),
       ),

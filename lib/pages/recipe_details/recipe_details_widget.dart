@@ -107,272 +107,282 @@ class _RecipeDetailsWidgetState extends State<RecipeDetailsWidget> {
             centerTitle: false,
             elevation: 0.0,
           ),
-          body: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
+          body: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(16.0),
+                            child: CachedNetworkImage(
+                              fadeInDuration: const Duration(milliseconds: 500),
+                              fadeOutDuration: const Duration(milliseconds: 500),
+                              imageUrl: recipeDetailsRecipesRow!.image!,
+                              width: MediaQuery.sizeOf(context).width * 0.9,
+                              height: 250.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 24.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            0.0, 16.0, 0.0, 16.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(16.0),
-                              child: CachedNetworkImage(
-                                fadeInDuration: const Duration(milliseconds: 500),
-                                fadeOutDuration: const Duration(milliseconds: 500),
-                                imageUrl: recipeDetailsRecipesRow!.image!,
-                                width: MediaQuery.sizeOf(context).width * 0.9,
-                                height: 250.0,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 0.0, 24.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: wrapWithModel(
-                                model: _model.tagModel,
-                                updateCallback: () => setState(() {}),
-                                child: TagWidget(
-                                  difficulty:
-                                      recipeDetailsRecipesRow.difficulty,
-                                  persons: recipeDetailsRecipesRow.persons,
-                                  duration: recipeDetailsRecipesRow.duration,
-                                  isReady: false,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
-                        child: Text(
-                          'Ingredients:',
-                          style:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Onest',
-                                    fontSize: 18.0,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: false,
-                                  ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                        child:
-                            FutureBuilder<List<RecipeIngredientsExtendedRow>>(
-                          future: RecipeIngredientsExtendedTable().queryRows(
-                            queryFn: (q) => q.eq(
-                              'recipe_id',
-                              widget.recipeId,
-                            ),
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).alternate,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }
-                            List<RecipeIngredientsExtendedRow>
-                                columnRecipeIngredientsExtendedRowList =
-                                snapshot.data!;
-                            return Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: List.generate(
-                                  columnRecipeIngredientsExtendedRowList.length,
-                                  (columnIndex) {
-                                final columnRecipeIngredientsExtendedRow =
-                                    columnRecipeIngredientsExtendedRowList[
-                                        columnIndex];
-                                return IngredientCardWidget(
-                                  key: Key(
-                                      'Key510_${columnIndex}_of_${columnRecipeIngredientsExtendedRowList.length}'),
-                                  isInFridge: columnRecipeIngredientsExtendedRow
-                                      .hasIngredient,
-                                  title: columnRecipeIngredientsExtendedRow
-                                      .ingredientName,
-                                  quantity: columnRecipeIngredientsExtendedRow
-                                      .quantity,
-                                  index: columnIndex + 1,
-                                  ingredientId:
-                                      columnRecipeIngredientsExtendedRow
-                                          .ingredientId!,
-                                );
-                              }),
-                            );
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            FFButtonWidget(
-                              onPressed: () async {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Succesfully added all items to shopping list!',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 3000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).success,
-                                  ),
-                                );
-                              },
-                              text: 'Add all missing items to list',
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Onest',
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: false,
-                                    ),
-                                elevation: 3.0,
-                                borderSide: const BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Divider(
-                        height: 36.0,
-                        thickness: 1.0,
-                        color: FlutterFlowTheme.of(context).customColor3,
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
-                        child: Text(
-                          'Directions',
-                          style:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Onest',
-                                    fontSize: 18.0,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: false,
-                                  ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
-                        child: Text(
-                          valueOrDefault<String>(
-                            recipeDetailsRecipesRow.description,
-                            'No data',
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Onest',
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: false,
-                                  ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              enableDrag: false,
-                              context: context,
-                              builder: (context) {
-                                return Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: SizedBox(
-                                    height:
-                                        MediaQuery.sizeOf(context).height * 0.6,
-                                    child: RateRecipeBottomSheetWidget(
-                                      recipeId: widget.recipeId,
-                                    ),
-                                  ),
-                                );
-                              },
-                            ).then((value) => safeSetState(() {}));
-                          },
-                          text: 'Done',
-                          options: FFButtonOptions(
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: 48.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .displaySmall
-                                .override(
-                                  fontFamily: 'Onest',
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.normal,
-                                  useGoogleFonts: false,
-                                ),
-                            elevation: 0.0,
-                            borderSide: const BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(16.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                        child: wrapWithModel(
+                          model: _model.tagModel,
+                          updateCallback: () => setState(() {}),
+                          child: TagWidget(
+                            difficulty: recipeDetailsRecipesRow.difficulty,
+                            persons: recipeDetailsRecipesRow.persons,
+                            duration: recipeDetailsRecipesRow.duration,
+                            isReady: false,
                           ),
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-            ],
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
+                      child: Text(
+                        'Ingredients:',
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Onest',
+                                  fontSize: 18.0,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: false,
+                                ),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                  child: FutureBuilder<List<RecipeIngredientsExtendedRow>>(
+                    future: RecipeIngredientsExtendedTable().queryRows(
+                      queryFn: (q) => q.eq(
+                        'recipe_id',
+                        widget.recipeId,
+                      ),
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                FlutterFlowTheme.of(context).alternate,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      List<RecipeIngredientsExtendedRow>
+                          columnRecipeIngredientsExtendedRowList =
+                          snapshot.data!;
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: List.generate(
+                            columnRecipeIngredientsExtendedRowList.length,
+                            (columnIndex) {
+                          final columnRecipeIngredientsExtendedRow =
+                              columnRecipeIngredientsExtendedRowList[
+                                  columnIndex];
+                          return IngredientCardWidget(
+                            key: Key(
+                                'Key510_${columnIndex}_of_${columnRecipeIngredientsExtendedRowList.length}'),
+                            isInFridge: columnRecipeIngredientsExtendedRow
+                                .hasIngredient,
+                            title: columnRecipeIngredientsExtendedRow
+                                .ingredientName,
+                            quantity:
+                                columnRecipeIngredientsExtendedRow.quantity,
+                            index: columnIndex + 1,
+                            ingredientId: columnRecipeIngredientsExtendedRow
+                                .ingredientId!,
+                          );
+                        }),
+                      );
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Succesfully added all items to shopping list!',
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          duration: const Duration(milliseconds: 3000),
+                          backgroundColor: FlutterFlowTheme.of(context).success,
+                        ),
+                      );
+                    },
+                    text: 'Add all missing items to list',
+                    options: FFButtonOptions(
+                      width: double.infinity,
+                      height: 52.0,
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle: FlutterFlowTheme.of(context)
+                          .labelLarge
+                          .override(
+                            fontFamily: 'Onest',
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: false,
+                          ),
+                      elevation: 1.0,
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                  ),
+                ),
+                Divider(
+                  height: 36.0,
+                  thickness: 1.0,
+                  color: FlutterFlowTheme.of(context).customColor3,
+                ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
+                  child: Text(
+                    'Directions',
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                          fontFamily: 'Onest',
+                          fontSize: 18.0,
+                          letterSpacing: 0.0,
+                          useGoogleFonts: false,
+                        ),
+                  ),
+                ),
+                Builder(
+                  builder: (context) {
+                    final items =
+                        recipeDetailsRecipesRow.descriptionList.toList() ??
+                            [];
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: items.length,
+                      itemBuilder: (context, itemsIndex) {
+                        final itemsItem = items[itemsIndex];
+                        return Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          child: Text(
+                            '${valueOrDefault<String>(
+                              (itemsIndex + 1).toString(),
+                              '1',
+                            )}. $itemsItem${valueOrDefault<String>(
+                              "\n",
+                              '\'\\n\'',
+                            )}',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Onest',
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: false,
+                                ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 34.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        enableDrag: false,
+                        context: context,
+                        builder: (context) {
+                          return Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: SizedBox(
+                              height: MediaQuery.sizeOf(context).height * 0.6,
+                              child: RateRecipeBottomSheetWidget(
+                                recipeId: widget.recipeId,
+                              ),
+                            ),
+                          );
+                        },
+                      ).then((value) => safeSetState(() {}));
+                    },
+                    text: 'Done',
+                    options: FFButtonOptions(
+                      width: double.infinity,
+                      height: 52.0,
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle: FlutterFlowTheme.of(context)
+                          .labelLarge
+                          .override(
+                            fontFamily: 'Onest',
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: false,
+                          ),
+                      elevation: 1.0,
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },

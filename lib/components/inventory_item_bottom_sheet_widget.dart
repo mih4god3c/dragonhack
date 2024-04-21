@@ -224,7 +224,7 @@ class _InventoryItemBottomSheetWidgetState
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .primary,
+                                                .alternate,
                                             width: 1.0,
                                           ),
                                           borderRadius:
@@ -260,105 +260,63 @@ class _InventoryItemBottomSheetWidgetState
                                           .asValidator(context),
                                     ),
                                   ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        final datePickedDate =
-                                            await showDatePicker(
-                                          context: context,
-                                          initialDate: getCurrentTimestamp,
-                                          firstDate: getCurrentTimestamp,
-                                          lastDate: DateTime(2050),
-                                          builder: (context, child) {
-                                            return wrapInMaterialDatePickerTheme(
-                                              context,
-                                              child!,
-                                              headerBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              headerForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              headerTextStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineLarge
-                                                      .override(
-                                                        fontFamily: 'Onest',
-                                                        fontSize: 32.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                              pickerBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              pickerForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              selectedDateTimeBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              selectedDateTimeForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              actionButtonForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              iconSize: 24.0,
-                                            );
-                                          },
-                                        );
+                                  FFButtonWidget(
+                                    onPressed: () async {
+                                      final datePickedDate =
+                                          await showDatePicker(
+                                        context: context,
+                                        initialDate: getCurrentTimestamp,
+                                        firstDate: getCurrentTimestamp,
+                                        lastDate: DateTime(2050),
+                                      );
 
-                                        if (datePickedDate != null) {
-                                          safeSetState(() {
-                                            _model.datePicked = DateTime(
-                                              datePickedDate.year,
-                                              datePickedDate.month,
-                                              datePickedDate.day,
-                                            );
-                                          });
-                                        }
-                                      },
-                                      text: _model.datePicked != null
-                                          ? valueOrDefault<String>(
-                                              dateTimeFormat(
-                                                  'MMMEd', _model.datePicked),
-                                              'No data',
-                                            )
-                                          : valueOrDefault<String>(
-                                              dateTimeFormat(
-                                                  'MMMEd',
-                                                  columnInventoryExtendedRow
-                                                      .expirationDate),
-                                              'No data',
-                                            ),
-                                      options: FFButtonOptions(
-                                        width: double.infinity,
-                                        height: 50.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
+                                      if (datePickedDate != null) {
+                                        safeSetState(() {
+                                          _model.datePicked = DateTime(
+                                            datePickedDate.year,
+                                            datePickedDate.month,
+                                            datePickedDate.day,
+                                          );
+                                        });
+                                      }
+                                    },
+                                    text: _model.datePicked != null
+                                        ? valueOrDefault<String>(
+                                            dateTimeFormat(
+                                                'MMMEd', _model.datePicked),
+                                            'No data',
+                                          )
+                                        : valueOrDefault<String>(
+                                            dateTimeFormat(
+                                                'MMMEd',
+                                                columnInventoryExtendedRow
+                                                    .expirationDate),
+                                            'No data',
+                                          ),
+                                    options: FFButtonOptions(
+                                      width: double.infinity,
+                                      height: 50.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            fontFamily: 'Onest',
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: false,
+                                          ),
+                                      elevation: 0.0,
+                                      borderSide: BorderSide(
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              fontFamily: 'Onest',
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: false,
-                                            ),
-                                        elevation: 0.0,
-                                        borderSide: const BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
+                                            .customColor3,
+                                        width: 1.0,
                                       ),
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
                                   ),
                                 ].divide(const SizedBox(height: 0.0)),

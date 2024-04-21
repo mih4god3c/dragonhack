@@ -125,7 +125,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                   const Duration(milliseconds: 2000),
                                   () => setState(() {}),
                                 ),
-                                autofocus: true,
+                                autofocus: false,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'Search inventory...',
@@ -146,8 +146,8 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                       width: 2.0,
                                     ),
                                     borderRadius: BorderRadius.circular(12.0),

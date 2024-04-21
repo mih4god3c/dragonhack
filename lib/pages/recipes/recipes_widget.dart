@@ -5,13 +5,19 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'recipes_model.dart';
 export 'recipes_model.dart';
 
 class RecipesWidget extends StatefulWidget {
-  const RecipesWidget({super.key});
+  const RecipesWidget({
+    super.key,
+    String? initialChip,
+  }) : initialChip = initialChip ?? 'All';
+
+  final String initialChip;
 
   @override
   State<RecipesWidget> createState() => _RecipesWidgetState();
@@ -27,8 +33,8 @@ class _RecipesWidgetState extends State<RecipesWidget> {
     super.initState();
     _model = createModel(context, () => RecipesModel());
 
-    _model.searchBarTextController ??= TextEditingController();
-    _model.searchBarFocusNode ??= FocusNode();
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -79,27 +85,25 @@ class _RecipesWidgetState extends State<RecipesWidget> {
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 8.0, 0.0),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
                     child: TextFormField(
-                      controller: _model.searchBarTextController,
-                      focusNode: _model.searchBarFocusNode,
-                      textCapitalization: TextCapitalization.words,
+                      controller: _model.textController,
+                      focusNode: _model.textFieldFocusNode,
+                      onChanged: (_) => EasyDebounce.debounce(
+                        '_model.textController',
+                        const Duration(milliseconds: 2000),
+                        () => setState(() {}),
+                      ),
+                      autofocus: false,
                       obscureText: false,
                       decoration: InputDecoration(
-                        labelText: 'Search for recipes',
+                        labelText: 'Search recipes...',
                         labelStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Onest',
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: false,
-                                ),
-                        hintStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   fontFamily: 'Onest',
                                   letterSpacing: 0.0,
@@ -109,70 +113,64 @@ class _RecipesWidgetState extends State<RecipesWidget> {
                           borderSide: BorderSide(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            width: 0.0,
+                            width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: FlutterFlowTheme.of(context).primary,
-                            width: 0.0,
+                            width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         errorBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: FlutterFlowTheme.of(context).error,
-                            width: 0.0,
+                            width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: FlutterFlowTheme.of(context).error,
-                            width: 0.0,
+                            width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         filled: true,
                         fillColor:
-                            FlutterFlowTheme.of(context).primaryBackground,
-                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 20.0, 24.0),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 16.0,
-                        ),
+                            FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Onest',
                             letterSpacing: 0.0,
                             useGoogleFonts: false,
                           ),
-                      validator: _model.searchBarTextControllerValidator
-                          .asValidator(context),
+                      validator:
+                          _model.textControllerValidator.asValidator(context),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 12.0, 0.0),
-                  child: FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30.0,
-                    borderWidth: 1.0,
-                    buttonSize: 50.0,
-                    icon: Icon(
-                      Icons.search_sharp,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 30.0,
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                    child: FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 30.0,
+                      borderWidth: 1.0,
+                      buttonSize: 44.0,
+                      icon: Icon(
+                        Icons.search_rounded,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 24.0,
+                      ),
+                      onPressed: () {
+                        print('IconButton pressed ...');
+                      },
                     ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
-                    },
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -180,14 +178,16 @@ class _RecipesWidgetState extends State<RecipesWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
                     child: FlutterFlowChoiceChips(
                       options: const [
                         ChipData('All'),
                         ChipData('Vegan', FontAwesomeIcons.leaf),
                         ChipData('High Protein', FontAwesomeIcons.horse),
                         ChipData('30min <', Icons.timer_rounded),
-                        ChipData('Ready to go', Icons.check_box)
+                        ChipData('Ready to go', Icons.check_box),
+                        ChipData('Ingredient', Icons.question_mark)
                       ],
                       onChanged: (val) => setState(
                           () => _model.choiceChipsValue = val?.firstOrNull),
@@ -203,7 +203,7 @@ class _RecipesWidgetState extends State<RecipesWidget> {
                                 ),
                         iconColor:
                             FlutterFlowTheme.of(context).primaryBackground,
-                        iconSize: 18.0,
+                        iconSize: 0.0,
                         labelPadding:
                             const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                         elevation: 4.0,
@@ -234,7 +234,7 @@ class _RecipesWidgetState extends State<RecipesWidget> {
                       alignment: WrapAlignment.start,
                       controller: _model.choiceChipsValueController ??=
                           FormFieldController<List<String>>(
-                        ['All'],
+                        [widget.initialChip],
                       ),
                       wrapped: true,
                     ),

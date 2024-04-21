@@ -3,7 +3,6 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'profile_model.dart';
 export 'profile_model.dart';
@@ -130,21 +129,22 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(2.0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(50.0),
-                                      child: CachedNetworkImage(
-                                        fadeInDuration:
-                                            const Duration(milliseconds: 500),
-                                        fadeOutDuration:
-                                            const Duration(milliseconds: 500),
-                                        imageUrl:
-                                            'https://hips.hearstapps.com/hmg-prod/images/gh-113021-ghi-best-fridges-1638385441.png?crop=0.486xw:0.746xh;0.0385xw,0.160xh&resize=640:*',
-                                        width: 60.0,
-                                        height: 60.0,
-                                        fit: BoxFit.cover,
+                                  child: Align(
+                                    alignment: const AlignmentDirectional(1.0, -1.0),
+                                    child: FlutterFlowIconButton(
+                                      borderRadius: 100.0,
+                                      buttonSize: 100.0,
+                                      fillColor:
+                                          FlutterFlowTheme.of(context).blueBack,
+                                      icon: Icon(
+                                        Icons.person,
+                                        color: FlutterFlowTheme.of(context)
+                                            .blueFront,
+                                        size: 30.0,
                                       ),
+                                      onPressed: () async {
+                                        context.pushNamed('Profile');
+                                      },
                                     ),
                                   ),
                                 ),
@@ -211,12 +211,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             height: 60.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              boxShadow: const [
+                                  .primaryBackground,
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 5.0,
-                                  color: Color(0x3416202A),
-                                  offset: Offset(
+                                  color:
+                                      FlutterFlowTheme.of(context).customColor3,
+                                  offset: const Offset(
                                     0.0,
                                     2.0,
                                   ),
@@ -276,13 +277,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           width: double.infinity,
                           height: 60.0,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            boxShadow: const [
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            boxShadow: [
                               BoxShadow(
                                 blurRadius: 5.0,
-                                color: Color(0x3416202A),
-                                offset: Offset(
+                                color:
+                                    FlutterFlowTheme.of(context).customColor3,
+                                offset: const Offset(
                                   0.0,
                                   2.0,
                                 ),
@@ -325,17 +327,72 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         () => _model.switchValue = newValue);
                                   },
                                   activeColor:
-                                      FlutterFlowTheme.of(context).secondary,
+                                      FlutterFlowTheme.of(context).blueBack,
                                   activeTrackColor:
-                                      FlutterFlowTheme.of(context).primary,
+                                      FlutterFlowTheme.of(context).blueFront,
                                   inactiveTrackColor:
-                                      FlutterFlowTheme.of(context).alternate,
+                                      FlutterFlowTheme.of(context).customColor1,
                                   inactiveThumbColor:
                                       FlutterFlowTheme.of(context)
                                           .secondaryText,
                                 ),
                               ],
                             ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 268.0,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 5.0,
+                                color:
+                                    FlutterFlowTheme.of(context).customColor3,
+                                offset: const Offset(
+                                  0.0,
+                                  2.0,
+                                ),
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(12.0),
+                            shape: BoxShape.rectangle,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 16.0, 20.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Icon(
+                                      Icons.checklist_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                    Text(
+                                      'Your weekly challenges',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .override(
+                                            fontFamily: 'Onest',
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: false,
+                                          ),
+                                    ),
+                                  ].divide(const SizedBox(width: 8.0)),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -347,7 +404,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     children: [
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 12.0, 16.0, 0.0),
+                            16.0, 12.0, 16.0, 12.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -360,59 +417,70 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
                             context.goNamedAuth('Onboarding', context.mounted);
                           },
-                          child: Container(
-                            width: double.infinity,
-                            height: 60.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primary,
-                              boxShadow: const [
-                                BoxShadow(
-                                  blurRadius: 5.0,
-                                  color: Color(0x3416202A),
-                                  offset: Offset(
-                                    0.0,
-                                    2.0,
-                                  ),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(12.0),
-                              shape: BoxShape.rectangle,
+                          child: Material(
+                            color: Colors.transparent,
+                            elevation: 1.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 8.0, 16.0, 8.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Icon(
-                                    Icons.logout_outlined,
+                            child: Container(
+                              width: double.infinity,
+                              height: 60.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).blueFront,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 5.0,
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 24.0,
-                                  ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        'Sign out',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Onest',
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: false,
-                                            ),
+                                        .customColor3,
+                                    offset: const Offset(
+                                      0.0,
+                                      2.0,
+                                    ),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(16.0),
+                                shape: BoxShape.rectangle,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 8.0, 16.0, 8.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Icon(
+                                      Icons.logout_outlined,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      size: 24.0,
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            12.0, 0.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Sign out',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Onest',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: false,
+                                              ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 18.0,
-                                  ),
-                                ],
+                                    Icon(
+                                      Icons.arrow_forward_ios,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      size: 18.0,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

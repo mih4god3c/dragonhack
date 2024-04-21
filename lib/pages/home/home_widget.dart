@@ -75,44 +75,55 @@ class _HomeWidgetState extends State<HomeWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            appBar: AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-              iconTheme:
-                  IconThemeData(color: FlutterFlowTheme.of(context).alternate),
-              automaticallyImplyLeading: false,
-              title: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Hi, ${homeUsersDataRow?.username}!',
-                    style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Onest',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.bold,
-                          useGoogleFonts: false,
+            appBar: PreferredSize(
+              preferredSize: const Size.fromHeight(80.0),
+              child: AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                iconTheme: IconThemeData(
+                    color: FlutterFlowTheme.of(context).alternate),
+                automaticallyImplyLeading: false,
+                title: Align(
+                  alignment: const AlignmentDirectional(0.0, 1.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Align(
+                        alignment: const AlignmentDirectional(0.0, 1.0),
+                        child: Text(
+                          'Hi, ${homeUsersDataRow?.username}!',
+                          style: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .override(
+                                fontFamily: 'Onest',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.bold,
+                                useGoogleFonts: false,
+                              ),
                         ),
-                  ),
-                  Align(
-                    alignment: const AlignmentDirectional(1.0, -1.0),
-                    child: FlutterFlowIconButton(
-                      borderRadius: 100.0,
-                      fillColor: FlutterFlowTheme.of(context).blueBack,
-                      icon: Icon(
-                        Icons.person,
-                        color: FlutterFlowTheme.of(context).blueFront,
-                        size: 30.0,
                       ),
-                      onPressed: () async {
-                        context.pushNamed('Profile');
-                      },
-                    ),
+                      Align(
+                        alignment: const AlignmentDirectional(1.0, -1.0),
+                        child: FlutterFlowIconButton(
+                          borderRadius: 100.0,
+                          fillColor: FlutterFlowTheme.of(context).blueBack,
+                          icon: Icon(
+                            Icons.person,
+                            color: FlutterFlowTheme.of(context).blueFront,
+                            size: 30.0,
+                          ),
+                          onPressed: () async {
+                            context.pushNamed('Profile');
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
+                actions: const [],
+                centerTitle: false,
               ),
-              actions: const [],
-              centerTitle: false,
             ),
             body: SafeArea(
               top: true,
@@ -229,11 +240,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
-                                                boxShadow: const [
+                                                boxShadow: [
                                                   BoxShadow(
                                                     blurRadius: 8.0,
-                                                    color: Color(0x33000000),
-                                                    offset: Offset(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .customColor3,
+                                                    offset: const Offset(
                                                       0.0,
                                                       2.0,
                                                     ),
@@ -370,11 +383,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .alternate,
-                                                boxShadow: const [
+                                                boxShadow: [
                                                   BoxShadow(
                                                     blurRadius: 8.0,
-                                                    color: Color(0x33000000),
-                                                    offset: Offset(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .customColor3,
+                                                    offset: const Offset(
                                                       0.0,
                                                       2.0,
                                                     ),
@@ -572,7 +587,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         ),
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 1.0, 0.0, 0.0),
+                                            0.0, 8.0, 0.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
@@ -587,11 +602,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryBackground,
-                                                  boxShadow: const [
+                                                  boxShadow: [
                                                     BoxShadow(
                                                       blurRadius: 8.0,
-                                                      color: Color(0x33000000),
-                                                      offset: Offset(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .customColor3,
+                                                      offset: const Offset(
                                                         0.0,
                                                         2.0,
                                                       ),
@@ -824,7 +842,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               onPressed:
                                                                   () async {
                                                                 context.pushNamed(
-                                                                    'Ingredients');
+                                                                    'ShoppingList');
                                                               },
                                                             ),
                                                           ].divide(const SizedBox(
@@ -921,174 +939,210 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           ],
                                         ),
                                       ),
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 1.0),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 16.0, 0.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 0.0, 0.0),
+                                                child: FlutterFlowIconButton(
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary,
+                                                  borderRadius: 100.0,
+                                                  borderWidth: 1.0,
+                                                  buttonSize: 75.0,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary,
+                                                  icon: Icon(
+                                                    Icons.menu_book_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size: 35.0,
+                                                  ),
+                                                  onPressed: () async {
+                                                    context
+                                                        .pushNamed('Recipes');
+                                                  },
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                child: FlutterFlowIconButton(
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .blueBack,
+                                                  borderRadius: 100.0,
+                                                  borderWidth: 1.0,
+                                                  buttonSize: 110.0,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .blueBack,
+                                                  icon: Icon(
+                                                    Icons.photo_camera,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .blueFront,
+                                                    size: 40.0,
+                                                  ),
+                                                  onPressed: () async {
+                                                    final selectedMedia =
+                                                        await selectMediaWithSourceBottomSheet(
+                                                      context: context,
+                                                      allowPhoto: true,
+                                                    );
+                                                    if (selectedMedia != null &&
+                                                        selectedMedia.every((m) =>
+                                                            validateFileFormat(
+                                                                m.storagePath,
+                                                                context))) {
+                                                      setState(() => _model
+                                                              .isDataUploading =
+                                                          true);
+                                                      var selectedUploadedFiles =
+                                                          <FFUploadedFile>[];
+
+                                                      try {
+                                                        selectedUploadedFiles =
+                                                            selectedMedia
+                                                                .map((m) =>
+                                                                    FFUploadedFile(
+                                                                      name: m
+                                                                          .storagePath
+                                                                          .split(
+                                                                              '/')
+                                                                          .last,
+                                                                      bytes: m
+                                                                          .bytes,
+                                                                      height: m
+                                                                          .dimensions
+                                                                          ?.height,
+                                                                      width: m
+                                                                          .dimensions
+                                                                          ?.width,
+                                                                      blurHash:
+                                                                          m.blurHash,
+                                                                    ))
+                                                                .toList();
+                                                      } finally {
+                                                        _model.isDataUploading =
+                                                            false;
+                                                      }
+                                                      if (selectedUploadedFiles
+                                                              .length ==
+                                                          selectedMedia
+                                                              .length) {
+                                                        setState(() {
+                                                          _model.uploadedLocalFile =
+                                                              selectedUploadedFiles
+                                                                  .first;
+                                                        });
+                                                      } else {
+                                                        setState(() {});
+                                                        return;
+                                                      }
+                                                    }
+
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      enableDrag: false,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return GestureDetector(
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
+                                                          child: Padding(
+                                                            padding: MediaQuery
+                                                                .viewInsetsOf(
+                                                                    context),
+                                                            child: SizedBox(
+                                                              height: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .height *
+                                                                  0.9,
+                                                              child:
+                                                                  CaptureBottomSheetWidget(
+                                                                imageRaw: _model
+                                                                    .uploadedLocalFile,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
+                                                  },
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 16.0, 0.0),
+                                                child: FlutterFlowIconButton(
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .tertiary,
+                                                  borderRadius: 100.0,
+                                                  borderWidth: 1.0,
+                                                  buttonSize: 75.0,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .tertiary,
+                                                  icon: Icon(
+                                                    Icons.format_list_bulleted,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                    size: 35.0,
+                                                  ),
+                                                  onPressed: () async {
+                                                    context
+                                                        .pushNamed('Inventory');
+                                                  },
+                                                ),
+                                              ),
+                                            ].divide(const SizedBox(width: 8.0)),
+                                          ),
+                                        ),
+                                      ),
                                     ].divide(const SizedBox(height: 8.0)),
                                   ),
                                 ),
                               ),
-                            ),
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 0.0, 0.0),
-                                      child: FlutterFlowIconButton(
-                                        borderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondary,
-                                        borderRadius: 100.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 75.0,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        icon: Icon(
-                                          Icons.menu_book_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 35.0,
-                                        ),
-                                        onPressed: () async {
-                                          context.pushNamed('Recipes');
-                                        },
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: FlutterFlowIconButton(
-                                        borderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .blueBack,
-                                        borderRadius: 100.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 110.0,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .blueBack,
-                                        icon: Icon(
-                                          Icons.photo_camera,
-                                          color: FlutterFlowTheme.of(context)
-                                              .blueFront,
-                                          size: 40.0,
-                                        ),
-                                        onPressed: () async {
-                                          final selectedMedia =
-                                              await selectMediaWithSourceBottomSheet(
-                                            context: context,
-                                            allowPhoto: true,
-                                          );
-                                          if (selectedMedia != null &&
-                                              selectedMedia.every((m) =>
-                                                  validateFileFormat(
-                                                      m.storagePath,
-                                                      context))) {
-                                            setState(() =>
-                                                _model.isDataUploading = true);
-                                            var selectedUploadedFiles =
-                                                <FFUploadedFile>[];
-
-                                            try {
-                                              selectedUploadedFiles =
-                                                  selectedMedia
-                                                      .map(
-                                                          (m) => FFUploadedFile(
-                                                                name: m
-                                                                    .storagePath
-                                                                    .split('/')
-                                                                    .last,
-                                                                bytes: m.bytes,
-                                                                height: m
-                                                                    .dimensions
-                                                                    ?.height,
-                                                                width: m
-                                                                    .dimensions
-                                                                    ?.width,
-                                                                blurHash:
-                                                                    m.blurHash,
-                                                              ))
-                                                      .toList();
-                                            } finally {
-                                              _model.isDataUploading = false;
-                                            }
-                                            if (selectedUploadedFiles.length ==
-                                                selectedMedia.length) {
-                                              setState(() {
-                                                _model.uploadedLocalFile =
-                                                    selectedUploadedFiles.first;
-                                              });
-                                            } else {
-                                              setState(() {});
-                                              return;
-                                            }
-                                          }
-
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return GestureDetector(
-                                                onTap: () => _model.unfocusNode
-                                                        .canRequestFocus
-                                                    ? FocusScope.of(context)
-                                                        .requestFocus(
-                                                            _model.unfocusNode)
-                                                    : FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: SizedBox(
-                                                    height: MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.9,
-                                                    child:
-                                                        CaptureBottomSheetWidget(
-                                                      imageRaw: _model
-                                                          .uploadedLocalFile,
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
-                                        },
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 16.0, 0.0),
-                                      child: FlutterFlowIconButton(
-                                        borderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .tertiary,
-                                        borderRadius: 100.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 75.0,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        icon: Icon(
-                                          Icons.format_list_bulleted,
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          size: 35.0,
-                                        ),
-                                        onPressed: () async {
-                                          context.pushNamed('Inventory');
-                                        },
-                                      ),
-                                    ),
-                                  ].divide(const SizedBox(width: 8.0)),
-                                ),
-                              ],
                             ),
                           ],
                         ),

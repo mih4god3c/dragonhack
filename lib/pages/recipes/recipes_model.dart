@@ -5,13 +5,17 @@ import 'recipes_widget.dart' show RecipesWidget;
 import 'package:flutter/material.dart';
 
 class RecipesModel extends FlutterFlowModel<RecipesWidget> {
+  ///  Local state fields for this page.
+
+  String initialChip = 'All';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for searchBar widget.
-  FocusNode? searchBarFocusNode;
-  TextEditingController? searchBarTextController;
-  String? Function(BuildContext, String?)? searchBarTextControllerValidator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
   // State field(s) for ChoiceChips widget.
   FormFieldController<List<String>>? choiceChipsValueController;
   String? get choiceChipsValue =>
@@ -29,8 +33,8 @@ class RecipesModel extends FlutterFlowModel<RecipesWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    searchBarFocusNode?.dispose();
-    searchBarTextController?.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
 
     recipeCardModels.dispose();
   }

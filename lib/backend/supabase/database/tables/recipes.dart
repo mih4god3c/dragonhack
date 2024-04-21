@@ -46,4 +46,8 @@ class RecipesRow extends SupabaseDataRow {
 
   int? get persons => getField<int>('persons');
   set persons(int? value) => setField<int>('persons', value);
+
+  List<String> get descriptionList => getListField<String>('description_list');
+  set descriptionList(List<String>? value) =>
+      setListField<String>('description_list', value);
 }

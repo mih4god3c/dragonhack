@@ -1,5 +1,4 @@
 import '/backend/api_requests/api_calls.dart';
-import '/chat_g_p_t/empty_list/empty_list_widget.dart';
 import '/chat_g_p_t/writing_indicator/writing_indicator_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -93,7 +92,7 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                     .primaryBackground,
                                 borderRadius: BorderRadius.circular(12.0),
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: FlutterFlowTheme.of(context).blueFront,
                                   width: 1.0,
                                 ),
                               ),
@@ -110,12 +109,6 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                           final chat =
                                               _model.chatHistory?.toList() ??
                                                   [];
-                                          if (chat.isEmpty) {
-                                            return const SizedBox(
-                                              width: double.infinity,
-                                              child: EmptyListWidget(),
-                                            );
-                                          }
                                           return ListView.builder(
                                             padding: const EdgeInsets.fromLTRB(
                                               0,
@@ -173,7 +166,7 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                                     BoxDecoration(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .accent1,
+                                                                      .secondaryBackground,
                                                                   borderRadius:
                                                                       const BorderRadius
                                                                           .only(
@@ -194,7 +187,7 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                                       .all(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primary,
+                                                                        .secondaryBackground,
                                                                     width: 2.0,
                                                                   ),
                                                                 ),
@@ -374,7 +367,7 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                                 BoxDecoration(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryBackground,
+                                                                  .blueBack,
                                                               borderRadius:
                                                                   const BorderRadius
                                                                       .only(
@@ -395,7 +388,7 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                                                   Border.all(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .alternate,
+                                                                    .blueBack,
                                                               ),
                                                             ),
                                                             child: Padding(
@@ -516,14 +509,14 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                                   ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).alternate,
+                              color: FlutterFlowTheme.of(context).blueFront,
                               width: 2.0,
                             ),
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: FlutterFlowTheme.of(context).blueFront,
                               width: 2.0,
                             ),
                             borderRadius: BorderRadius.circular(12.0),
@@ -567,7 +560,7 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                         buttonSize: 60.0,
                         icon: Icon(
                           Icons.send_rounded,
-                          color: FlutterFlowTheme.of(context).primary,
+                          color: FlutterFlowTheme.of(context).blueFront,
                           size: 30.0,
                         ),
                         showLoadingIndicator: true,

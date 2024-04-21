@@ -92,11 +92,11 @@ class _IngredientItemWidgetState extends State<IngredientItemWidget> {
             height: 114.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).primaryBackground,
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   blurRadius: 10.0,
-                  color: Color(0x14111111),
-                  offset: Offset(
+                  color: FlutterFlowTheme.of(context).customColor3,
+                  offset: const Offset(
                     0.0,
                     2.0,
                   ),
@@ -106,7 +106,7 @@ class _IngredientItemWidgetState extends State<IngredientItemWidget> {
               border: Border.all(
                 color: valueOrDefault<Color>(
                   _model.selected
-                      ? FlutterFlowTheme.of(context).secondary
+                      ? FlutterFlowTheme.of(context).alternate
                       : FlutterFlowTheme.of(context).primaryBackground,
                   FlutterFlowTheme.of(context).primaryBackground,
                 ),

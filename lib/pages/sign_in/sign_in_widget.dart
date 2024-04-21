@@ -23,10 +23,11 @@ class _SignInWidgetState extends State<SignInWidget> {
     super.initState();
     _model = createModel(context, () => SignInModel());
 
-    _model.emailAddressTextController ??= TextEditingController();
+    _model.emailAddressTextController ??=
+        TextEditingController(text: 'hladilniki@dragonhack.com');
     _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.passwordTextController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController(text: 'geslo888');
     _model.passwordFocusNode ??= FocusNode();
   }
 
@@ -118,7 +119,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                           child: TextFormField(
                             controller: _model.emailAddressTextController,
                             focusNode: _model.emailAddressFocusNode,
-                            autofocus: true,
+                            autofocus: false,
                             autofillHints: const [AutofillHints.email],
                             obscureText: false,
                             decoration: InputDecoration(
@@ -186,13 +187,13 @@ class _SignInWidgetState extends State<SignInWidget> {
                       ),
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 16.0),
+                            16.0, 8.0, 16.0, 16.0),
                         child: SizedBox(
                           width: double.infinity,
                           child: TextFormField(
                             controller: _model.passwordTextController,
                             focusNode: _model.passwordFocusNode,
-                            autofocus: true,
+                            autofocus: false,
                             autofillHints: const [AutofillHints.password],
                             obscureText: !_model.passwordVisibility,
                             decoration: InputDecoration(
@@ -275,7 +276,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                         alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 16.0),
+                              16.0, 8.0, 16.0, 16.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               GoRouter.of(context).prepareAuthEvent();
@@ -294,7 +295,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                             text: 'Sign In',
                             options: FFButtonOptions(
                               width: double.infinity,
-                              height: 52.0,
+                              height: 60.0,
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               iconPadding: const EdgeInsetsDirectional.fromSTEB(
@@ -308,12 +309,12 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                   ),
-                              elevation: 3.0,
+                              elevation: 1.0,
                               borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8.0),
+                              borderRadius: BorderRadius.circular(16.0),
                             ),
                           ),
                         ),

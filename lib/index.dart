@@ -10,3 +10,4 @@ export '/pages/recipe_details/recipe_details_widget.dart'
 export '/pages/profile/profile_widget.dart' show ProfileWidget;
 export '/chat_g_p_t/chat_ai_screen/chat_ai_screen_widget.dart'
     show ChatAiScreenWidget;
+export '/pages/shopping_list/shopping_list_widget.dart' show ShoppingListWidget;

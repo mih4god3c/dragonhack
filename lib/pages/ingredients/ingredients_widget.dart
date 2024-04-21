@@ -145,7 +145,7 @@ class _IngredientsWidgetState extends State<IngredientsWidget> {
                                     const Duration(milliseconds: 2000),
                                     () => setState(() {}),
                                   ),
-                                  autofocus: true,
+                                  autofocus: false,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Search ingredients...',
@@ -306,27 +306,40 @@ class _IngredientsWidgetState extends State<IngredientsWidget> {
                                             width: 114.0,
                                             height: 90.0,
                                             decoration: const BoxDecoration(),
-                                            child: IngredientItemWidget(
-                                              key: Key(
-                                                  'Keydqm_${fruitsIndex}_of_${fruits.length}'),
-                                              name: fruitsItem.name,
-                                              image: fruitsItem.image,
-                                              selected: _model.checked
-                                                  .contains(fruitsItem.id),
-                                              ingredientId: fruitsItem.id,
-                                              addToArray: (ingredientId) async {
-                                                setState(() {
-                                                  _model.addToChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
-                                              removeFromArray:
-                                                  (ingredientId) async {
-                                                setState(() {
-                                                  _model.removeFromChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
+                                            child: wrapWithModel(
+                                              model: _model
+                                                  .ingredientItemModels1
+                                                  .getModel(
+                                                '${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}',
+                                                fruitsIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              updateOnChange: true,
+                                              child: IngredientItemWidget(
+                                                key: Key(
+                                                  'Keydqm_${'${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}'}',
+                                                ),
+                                                name: fruitsItem.name,
+                                                image: fruitsItem.image,
+                                                selected: _model.checked
+                                                    .contains(fruitsItem.id),
+                                                ingredientId: fruitsItem.id,
+                                                addToArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.addToChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                                removeFromArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.removeFromChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                              ),
                                             ),
                                           );
                                         },
@@ -419,26 +432,40 @@ class _IngredientsWidgetState extends State<IngredientsWidget> {
                                             width: 114.0,
                                             height: 90.0,
                                             decoration: const BoxDecoration(),
-                                            child: IngredientItemWidget(
-                                              key: Key(
-                                                  'Keyt6l_${fruitsIndex}_of_${fruits.length}'),
-                                              name: fruitsItem.name,
-                                              image: fruitsItem.image,
-                                              selected: false,
-                                              ingredientId: fruitsItem.id,
-                                              addToArray: (ingredientId) async {
-                                                setState(() {
-                                                  _model.addToChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
-                                              removeFromArray:
-                                                  (ingredientId) async {
-                                                setState(() {
-                                                  _model.removeFromChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
+                                            child: wrapWithModel(
+                                              model: _model
+                                                  .ingredientItemModels2
+                                                  .getModel(
+                                                '${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}',
+                                                fruitsIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              updateOnChange: true,
+                                              child: IngredientItemWidget(
+                                                key: Key(
+                                                  'Keyt6l_${'${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}'}',
+                                                ),
+                                                name: fruitsItem.name,
+                                                image: fruitsItem.image,
+                                                selected: _model.checked
+                                                    .contains(fruitsItem.id),
+                                                ingredientId: fruitsItem.id,
+                                                addToArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.addToChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                                removeFromArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.removeFromChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                              ),
                                             ),
                                           );
                                         },
@@ -531,26 +558,40 @@ class _IngredientsWidgetState extends State<IngredientsWidget> {
                                             width: 114.0,
                                             height: 90.0,
                                             decoration: const BoxDecoration(),
-                                            child: IngredientItemWidget(
-                                              key: Key(
-                                                  'Key6ec_${fruitsIndex}_of_${fruits.length}'),
-                                              name: fruitsItem.name,
-                                              image: fruitsItem.image,
-                                              selected: false,
-                                              ingredientId: fruitsItem.id,
-                                              addToArray: (ingredientId) async {
-                                                setState(() {
-                                                  _model.addToChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
-                                              removeFromArray:
-                                                  (ingredientId) async {
-                                                setState(() {
-                                                  _model.removeFromChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
+                                            child: wrapWithModel(
+                                              model: _model
+                                                  .ingredientItemModels3
+                                                  .getModel(
+                                                '${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}',
+                                                fruitsIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              updateOnChange: true,
+                                              child: IngredientItemWidget(
+                                                key: Key(
+                                                  'Key6ec_${'${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}'}',
+                                                ),
+                                                name: fruitsItem.name,
+                                                image: fruitsItem.image,
+                                                selected: _model.checked
+                                                    .contains(fruitsItem.id),
+                                                ingredientId: fruitsItem.id,
+                                                addToArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.addToChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                                removeFromArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.removeFromChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                              ),
                                             ),
                                           );
                                         },
@@ -643,26 +684,40 @@ class _IngredientsWidgetState extends State<IngredientsWidget> {
                                             width: 114.0,
                                             height: 90.0,
                                             decoration: const BoxDecoration(),
-                                            child: IngredientItemWidget(
-                                              key: Key(
-                                                  'Keyx93_${fruitsIndex}_of_${fruits.length}'),
-                                              name: fruitsItem.name,
-                                              image: fruitsItem.image,
-                                              selected: false,
-                                              ingredientId: fruitsItem.id,
-                                              addToArray: (ingredientId) async {
-                                                setState(() {
-                                                  _model.addToChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
-                                              removeFromArray:
-                                                  (ingredientId) async {
-                                                setState(() {
-                                                  _model.removeFromChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
+                                            child: wrapWithModel(
+                                              model: _model
+                                                  .ingredientItemModels4
+                                                  .getModel(
+                                                '${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}',
+                                                fruitsIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              updateOnChange: true,
+                                              child: IngredientItemWidget(
+                                                key: Key(
+                                                  'Keyx93_${'${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}'}',
+                                                ),
+                                                name: fruitsItem.name,
+                                                image: fruitsItem.image,
+                                                selected: _model.checked
+                                                    .contains(fruitsItem.id),
+                                                ingredientId: fruitsItem.id,
+                                                addToArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.addToChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                                removeFromArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.removeFromChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                              ),
                                             ),
                                           );
                                         },
@@ -756,26 +811,40 @@ class _IngredientsWidgetState extends State<IngredientsWidget> {
                                             width: 114.0,
                                             height: 90.0,
                                             decoration: const BoxDecoration(),
-                                            child: IngredientItemWidget(
-                                              key: Key(
-                                                  'Key1y4_${fruitsIndex}_of_${fruits.length}'),
-                                              name: fruitsItem.name,
-                                              image: fruitsItem.image,
-                                              selected: false,
-                                              ingredientId: fruitsItem.id,
-                                              addToArray: (ingredientId) async {
-                                                setState(() {
-                                                  _model.addToChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
-                                              removeFromArray:
-                                                  (ingredientId) async {
-                                                setState(() {
-                                                  _model.removeFromChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
+                                            child: wrapWithModel(
+                                              model: _model
+                                                  .ingredientItemModels5
+                                                  .getModel(
+                                                '${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}',
+                                                fruitsIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              updateOnChange: true,
+                                              child: IngredientItemWidget(
+                                                key: Key(
+                                                  'Key1y4_${'${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}'}',
+                                                ),
+                                                name: fruitsItem.name,
+                                                image: fruitsItem.image,
+                                                selected: _model.checked
+                                                    .contains(fruitsItem.id),
+                                                ingredientId: fruitsItem.id,
+                                                addToArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.addToChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                                removeFromArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.removeFromChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                              ),
                                             ),
                                           );
                                         },
@@ -868,26 +937,39 @@ class _IngredientsWidgetState extends State<IngredientsWidget> {
                                             width: 114.0,
                                             height: 90.0,
                                             decoration: const BoxDecoration(),
-                                            child: IngredientItemWidget(
-                                              key: Key(
-                                                  'Key6t1_${fruitsIndex}_of_${fruits.length}'),
-                                              name: fruitsItem.name,
-                                              image: fruitsItem.image,
-                                              selected: false,
-                                              ingredientId: fruitsItem.id,
-                                              addToArray: (ingredientId) async {
-                                                setState(() {
-                                                  _model.addToChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
-                                              removeFromArray:
-                                                  (ingredientId) async {
-                                                setState(() {
-                                                  _model.removeFromChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
+                                            child: wrapWithModel(
+                                              model: _model
+                                                  .ingredientItemModels6
+                                                  .getModel(
+                                                '${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}',
+                                                fruitsIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              child: IngredientItemWidget(
+                                                key: Key(
+                                                  'Key6t1_${'${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}'}',
+                                                ),
+                                                name: fruitsItem.name,
+                                                image: fruitsItem.image,
+                                                selected: _model.checked
+                                                    .contains(fruitsItem.id),
+                                                ingredientId: fruitsItem.id,
+                                                addToArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.addToChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                                removeFromArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.removeFromChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                              ),
                                             ),
                                           );
                                         },
@@ -980,26 +1062,40 @@ class _IngredientsWidgetState extends State<IngredientsWidget> {
                                             width: 114.0,
                                             height: 90.0,
                                             decoration: const BoxDecoration(),
-                                            child: IngredientItemWidget(
-                                              key: Key(
-                                                  'Key8uz_${fruitsIndex}_of_${fruits.length}'),
-                                              name: fruitsItem.name,
-                                              image: fruitsItem.image,
-                                              selected: false,
-                                              ingredientId: fruitsItem.id,
-                                              addToArray: (ingredientId) async {
-                                                setState(() {
-                                                  _model.addToChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
-                                              removeFromArray:
-                                                  (ingredientId) async {
-                                                setState(() {
-                                                  _model.removeFromChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
+                                            child: wrapWithModel(
+                                              model: _model
+                                                  .ingredientItemModels7
+                                                  .getModel(
+                                                '${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}',
+                                                fruitsIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              updateOnChange: true,
+                                              child: IngredientItemWidget(
+                                                key: Key(
+                                                  'Key8uz_${'${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}'}',
+                                                ),
+                                                name: fruitsItem.name,
+                                                image: fruitsItem.image,
+                                                selected: _model.checked
+                                                    .contains(fruitsItem.id),
+                                                ingredientId: fruitsItem.id,
+                                                addToArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.addToChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                                removeFromArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.removeFromChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                              ),
                                             ),
                                           );
                                         },
@@ -1092,26 +1188,40 @@ class _IngredientsWidgetState extends State<IngredientsWidget> {
                                             width: 114.0,
                                             height: 90.0,
                                             decoration: const BoxDecoration(),
-                                            child: IngredientItemWidget(
-                                              key: Key(
-                                                  'Keyd6q_${fruitsIndex}_of_${fruits.length}'),
-                                              name: fruitsItem.name,
-                                              image: fruitsItem.image,
-                                              selected: false,
-                                              ingredientId: fruitsItem.id,
-                                              addToArray: (ingredientId) async {
-                                                setState(() {
-                                                  _model.addToChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
-                                              removeFromArray:
-                                                  (ingredientId) async {
-                                                setState(() {
-                                                  _model.removeFromChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
+                                            child: wrapWithModel(
+                                              model: _model
+                                                  .ingredientItemModels8
+                                                  .getModel(
+                                                '${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}',
+                                                fruitsIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              updateOnChange: true,
+                                              child: IngredientItemWidget(
+                                                key: Key(
+                                                  'Keyd6q_${'${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}'}',
+                                                ),
+                                                name: fruitsItem.name,
+                                                image: fruitsItem.image,
+                                                selected: _model.checked
+                                                    .contains(fruitsItem.id),
+                                                ingredientId: fruitsItem.id,
+                                                addToArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.addToChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                                removeFromArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.removeFromChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                              ),
                                             ),
                                           );
                                         },
@@ -1204,26 +1314,40 @@ class _IngredientsWidgetState extends State<IngredientsWidget> {
                                             width: 114.0,
                                             height: 90.0,
                                             decoration: const BoxDecoration(),
-                                            child: IngredientItemWidget(
-                                              key: Key(
-                                                  'Key8xo_${fruitsIndex}_of_${fruits.length}'),
-                                              name: fruitsItem.name,
-                                              image: fruitsItem.image,
-                                              selected: false,
-                                              ingredientId: fruitsItem.id,
-                                              addToArray: (ingredientId) async {
-                                                setState(() {
-                                                  _model.addToChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
-                                              removeFromArray:
-                                                  (ingredientId) async {
-                                                setState(() {
-                                                  _model.removeFromChecked(
-                                                      ingredientId!);
-                                                });
-                                              },
+                                            child: wrapWithModel(
+                                              model: _model
+                                                  .ingredientItemModels9
+                                                  .getModel(
+                                                '${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}',
+                                                fruitsIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              updateOnChange: true,
+                                              child: IngredientItemWidget(
+                                                key: Key(
+                                                  'Key8xo_${'${fruitsItem.id.toString()}${_model.checked.contains(fruitsItem.id).toString()}'}',
+                                                ),
+                                                name: fruitsItem.name,
+                                                image: fruitsItem.image,
+                                                selected: _model.checked
+                                                    .contains(fruitsItem.id),
+                                                ingredientId: fruitsItem.id,
+                                                addToArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.addToChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                                removeFromArray:
+                                                    (ingredientId) async {
+                                                  setState(() {
+                                                    _model.removeFromChecked(
+                                                        ingredientId!);
+                                                  });
+                                                },
+                                              ),
                                             ),
                                           );
                                         },

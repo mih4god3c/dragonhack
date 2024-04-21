@@ -14,12 +14,15 @@ class TagWidget extends StatefulWidget {
     this.persons,
     this.duration,
     this.isReady,
-  }) : difficulty = difficulty ?? 1;
+    bool? show,
+  })  : difficulty = difficulty ?? 1,
+        show = show ?? true;
 
   final int difficulty;
   final int? persons;
   final String? duration;
   final bool? isReady;
+  final bool show;
 
   @override
   State<TagWidget> createState() => _TagWidgetState();
@@ -75,10 +78,10 @@ class _TagWidgetState extends State<TagWidget> with TickerProviderStateMixin {
         Container(
           height: 32.0,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).primary,
+            color: FlutterFlowTheme.of(context).secondary,
             borderRadius: BorderRadius.circular(8.0),
             border: Border.all(
-              color: FlutterFlowTheme.of(context).primary,
+              color: FlutterFlowTheme.of(context).secondary,
             ),
           ),
           child: Padding(
@@ -95,7 +98,7 @@ class _TagWidgetState extends State<TagWidget> with TickerProviderStateMixin {
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Onest',
-                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          color: FlutterFlowTheme.of(context).primaryText,
                           letterSpacing: 0.0,
                           useGoogleFonts: false,
                         ),
@@ -103,7 +106,7 @@ class _TagWidgetState extends State<TagWidget> with TickerProviderStateMixin {
                 ),
                 Icon(
                   Icons.person,
-                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  color: FlutterFlowTheme.of(context).primaryText,
                   size: 20.0,
                 ),
               ].divide(const SizedBox(width: 8.0)),
@@ -113,10 +116,10 @@ class _TagWidgetState extends State<TagWidget> with TickerProviderStateMixin {
         Container(
           height: 32.0,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).primary,
+            color: FlutterFlowTheme.of(context).secondary,
             borderRadius: BorderRadius.circular(8.0),
             border: Border.all(
-              color: FlutterFlowTheme.of(context).primary,
+              color: FlutterFlowTheme.of(context).secondary,
             ),
           ),
           child: Padding(
@@ -133,7 +136,7 @@ class _TagWidgetState extends State<TagWidget> with TickerProviderStateMixin {
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Onest',
-                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          color: FlutterFlowTheme.of(context).primaryText,
                           letterSpacing: 0.0,
                           useGoogleFonts: false,
                         ),
@@ -141,7 +144,7 @@ class _TagWidgetState extends State<TagWidget> with TickerProviderStateMixin {
                 ),
                 FaIcon(
                   FontAwesomeIcons.exclamationCircle,
-                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  color: FlutterFlowTheme.of(context).primaryText,
                   size: 16.0,
                 ),
               ].divide(const SizedBox(width: 8.0)),
@@ -151,10 +154,10 @@ class _TagWidgetState extends State<TagWidget> with TickerProviderStateMixin {
         Container(
           height: 32.0,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).primary,
+            color: FlutterFlowTheme.of(context).secondary,
             borderRadius: BorderRadius.circular(8.0),
             border: Border.all(
-              color: FlutterFlowTheme.of(context).primary,
+              color: FlutterFlowTheme.of(context).secondary,
             ),
           ),
           child: Padding(
@@ -171,7 +174,7 @@ class _TagWidgetState extends State<TagWidget> with TickerProviderStateMixin {
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Onest',
-                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          color: FlutterFlowTheme.of(context).primaryText,
                           letterSpacing: 0.0,
                           useGoogleFonts: false,
                         ),
@@ -179,22 +182,22 @@ class _TagWidgetState extends State<TagWidget> with TickerProviderStateMixin {
                 ),
                 Icon(
                   Icons.timer,
-                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  color: FlutterFlowTheme.of(context).primaryText,
                   size: 16.0,
                 ),
               ].divide(const SizedBox(width: 8.0)),
             ),
           ),
         ),
-        if (widget.isReady ?? true)
+        if (widget.isReady! && widget.show)
           Flexible(
             child: Icon(
               Icons.check_circle,
-              color: FlutterFlowTheme.of(context).primary,
+              color: FlutterFlowTheme.of(context).success,
               size: 24.0,
             ),
           ),
-        if (!widget.isReady!)
+        if (!widget.isReady! && widget.show)
           FaIcon(
             FontAwesomeIcons.exclamationCircle,
             color: FlutterFlowTheme.of(context).error,

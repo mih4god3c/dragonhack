@@ -560,8 +560,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Image.network(
-                        'https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_880/f5be788a-4531-450e-9954-603e10d75daf/epic-luxe-womens-mid-rise-trail-running-leggings-N5wX3G.png',
+                      Image.asset(
+                        'assets/images/step2.jpg',
                         width: double.infinity,
                         height: 500.0,
                         fit: BoxFit.cover,

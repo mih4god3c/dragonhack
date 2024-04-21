@@ -89,7 +89,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Recipes',
           path: '/recipes',
-          builder: (context, params) => const RecipesWidget(),
+          builder: (context, params) => RecipesWidget(
+            initialChip: params.getParam(
+              'initialChip',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'Inventory',
@@ -130,6 +135,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'chat_ai_Screen',
           path: '/chatAiScreen',
           builder: (context, params) => const ChatAiScreenWidget(),
+        ),
+        FFRoute(
+          name: 'ShoppingList',
+          path: '/shoppingList',
+          builder: (context, params) => const ShoppingListWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

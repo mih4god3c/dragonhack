@@ -90,10 +90,11 @@ class _RecipeCardWidgetState extends State<RecipeCardWidget>
           color: FlutterFlowTheme.of(context).primaryBackground,
           boxShadow: [
             BoxShadow(
-              color: FlutterFlowTheme.of(context).primaryBackground,
+              blurRadius: 4.0,
+              color: FlutterFlowTheme.of(context).customColor3,
               offset: const Offset(
                 0.0,
-                1.0,
+                2.0,
               ),
             )
           ],
@@ -132,10 +133,11 @@ class _RecipeCardWidgetState extends State<RecipeCardWidget>
                           'Recipe',
                         ),
                         style:
-                            FlutterFlowTheme.of(context).headlineSmall.override(
+                            FlutterFlowTheme.of(context).headlineLarge.override(
                                   fontFamily: 'Onest',
-                                  fontSize: 18.0,
+                                  fontSize: 26.0,
                                   letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
                                   useGoogleFonts: false,
                                 ),
                       ),
@@ -152,6 +154,7 @@ class _RecipeCardWidgetState extends State<RecipeCardWidget>
                               persons: widget.persons,
                               duration: widget.duration,
                               isReady: false,
+                              show: true,
                             ),
                           ),
                         ),

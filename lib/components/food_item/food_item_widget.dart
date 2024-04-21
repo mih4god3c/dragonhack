@@ -56,11 +56,11 @@ class _FoodItemWidgetState extends State<FoodItemWidget> {
           height: 114.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).primaryBackground,
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(
                 blurRadius: 10.0,
-                color: Color(0x14111111),
-                offset: Offset(
+                color: FlutterFlowTheme.of(context).customColor3,
+                offset: const Offset(
                   0.0,
                   2.0,
                 ),

@@ -55,7 +55,7 @@ class _EmptyListWidgetState extends State<EmptyListWidget> {
             children: [
               Icon(
                 Icons.forum_outlined,
-                color: FlutterFlowTheme.of(context).primary,
+                color: FlutterFlowTheme.of(context).blueFront,
                 size: 90.0,
               ),
               SelectionArea(
@@ -87,7 +87,7 @@ class _EmptyListWidgetState extends State<EmptyListWidget> {
                   'https://platform.openai.com',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Onest',
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: FlutterFlowTheme.of(context).blueFront,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w600,
                         useGoogleFonts: false,
@@ -107,7 +107,7 @@ class _EmptyListWidgetState extends State<EmptyListWidget> {
                         const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
                         const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
+                    color: FlutterFlowTheme.of(context).blueFront,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Onest',
                           color: Colors.white,

@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'food_add_bottom_sheet_model.dart';
 export 'food_add_bottom_sheet_model.dart';
@@ -237,62 +238,35 @@ class _FoodAddBottomSheetWidgetState extends State<FoodAddBottomSheetWidget> {
                                     alignment: const AlignmentDirectional(-1.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        final datePickedDate =
-                                            await showDatePicker(
-                                          context: context,
-                                          initialDate: getCurrentTimestamp,
-                                          firstDate: getCurrentTimestamp,
-                                          lastDate: DateTime(2050),
-                                          builder: (context, child) {
-                                            return wrapInMaterialDatePickerTheme(
-                                              context,
-                                              child!,
-                                              headerBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              headerForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              headerTextStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineLarge
-                                                      .override(
-                                                        fontFamily: 'Onest',
-                                                        fontSize: 32.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                              pickerBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              pickerForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              selectedDateTimeBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              selectedDateTimeForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              actionButtonForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              iconSize: 24.0,
-                                            );
-                                          },
-                                        );
-
-                                        if (datePickedDate != null) {
-                                          safeSetState(() {
-                                            _model.datePicked = DateTime(
-                                              datePickedDate.year,
-                                              datePickedDate.month,
-                                              datePickedDate.day,
-                                            );
-                                          });
-                                        }
+                                        await showModalBottomSheet<bool>(
+                                            context: context,
+                                            builder: (context) {
+                                              return SizedBox(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    3,
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                child: CupertinoDatePicker(
+                                                  mode: CupertinoDatePickerMode
+                                                      .date,
+                                                  minimumDate:
+                                                      getCurrentTimestamp,
+                                                  initialDateTime:
+                                                      getCurrentTimestamp,
+                                                  maximumDate: DateTime(2050),
+                                                  use24hFormat: false,
+                                                  onDateTimeChanged:
+                                                      (newDateTime) =>
+                                                          safeSetState(() {
+                                                    _model.datePicked =
+                                                        newDateTime;
+                                                  }),
+                                                ),
+                                              );
+                                            });
                                       },
                                       text: _model.datePicked != null
                                           ? dateTimeFormat(
@@ -362,6 +336,17 @@ class _FoodAddBottomSheetWidgetState extends State<FoodAddBottomSheetWidget> {
                                   'user_id': currentUserUid,
                                 });
                                 Navigator.pop(context);
+
+                                context.pushNamed(
+                                  'Recipes',
+                                  queryParameters: {
+                                    'initialChip': serializeParam(
+                                      'Ingredient',
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
+
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
