@@ -7,7 +7,7 @@ import 'package:just_audio/just_audio.dart';
 class RecipeDetailsModel extends FlutterFlowModel<RecipeDetailsWidget> {
   ///  Local state fields for this page.
 
-  bool isPlaying = true;
+  bool isPlaying = false;
 
   ///  State fields for stateful widgets in this page.
 

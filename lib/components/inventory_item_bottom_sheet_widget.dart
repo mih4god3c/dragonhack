@@ -48,7 +48,6 @@ class _InventoryItemBottomSheetWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: MediaQuery.sizeOf(context).height * 1.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primaryBackground,
         borderRadius: const BorderRadius.only(
@@ -87,11 +86,10 @@ class _InventoryItemBottomSheetWidgetState
                   ? columnInventoryExtendedRowList.first
                   : null;
           return Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 1.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primaryBackground,
                   borderRadius: const BorderRadius.only(

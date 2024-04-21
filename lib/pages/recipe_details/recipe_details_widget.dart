@@ -307,7 +307,7 @@ class _RecipeDetailsWidgetState extends State<RecipeDetailsWidget> {
                                   ),
                         ),
                       ),
-                      if (_model.isPlaying)
+                      if (!_model.isPlaying)
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 8.0, 0.0),
@@ -336,7 +336,7 @@ class _RecipeDetailsWidgetState extends State<RecipeDetailsWidget> {
                             ),
                           ),
                         ),
-                      if (!_model.isPlaying)
+                      if (_model.isPlaying)
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 8.0, 0.0),
