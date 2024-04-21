@@ -83,10 +83,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                     color: FlutterFlowTheme.of(context).alternate),
                 automaticallyImplyLeading: false,
                 title: Align(
-                  alignment: const AlignmentDirectional(0.0, 1.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Align(
                         alignment: const AlignmentDirectional(0.0, 1.0),
@@ -123,6 +124,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                 ),
                 actions: const [],
                 centerTitle: false,
+                toolbarHeight: 80.0,
               ),
             ),
             body: SafeArea(
