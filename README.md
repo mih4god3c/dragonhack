@@ -2,7 +2,7 @@
 
 ## Team: Hladilniki
 
-### Project
+### Project WasteWise
 
 ### Members
 
@@ -21,7 +21,7 @@
 
 ## About
 
-The TODO application solves the problem of zero food waste. In short, it solves two main problems:
+The application solves the problem of zero food waste. In short, it solves two main problems:
 
 - helps you find the best recipe you would usually throw away
 - helps you keep an eye on your inventory and reminds you for the food items that are about to expire
