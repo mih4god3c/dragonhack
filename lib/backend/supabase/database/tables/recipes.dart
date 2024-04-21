@@ -50,4 +50,7 @@ class RecipesRow extends SupabaseDataRow {
   List<String> get descriptionList => getListField<String>('description_list');
   set descriptionList(List<String>? value) =>
       setListField<String>('description_list', value);
+
+  String? get mp3File => getField<String>('mp3_file');
+  set mp3File(String? value) => setField<String>('mp3_file', value);
 }

@@ -158,7 +158,7 @@ class _IngredientCardWidgetState extends State<IngredientCardWidget> {
                     content: Text(
                       '${widget.title} was successfully added to the list!',
                       style: TextStyle(
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        color: FlutterFlowTheme.of(context).primaryBackground,
                       ),
                     ),
                     duration: const Duration(milliseconds: 1200),

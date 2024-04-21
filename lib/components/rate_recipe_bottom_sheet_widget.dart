@@ -290,15 +290,10 @@ class _RateRecipeBottomSheetWidgetState
                         SnackBar(
                           content: Text(
                             'Succesfully finished recipe!',
-                            style: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .override(
-                                  fontFamily: 'Onest',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: false,
-                                ),
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                            ),
                           ),
                           duration: const Duration(milliseconds: 4000),
                           backgroundColor: FlutterFlowTheme.of(context).success,

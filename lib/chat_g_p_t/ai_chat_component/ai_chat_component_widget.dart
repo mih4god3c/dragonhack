@@ -32,7 +32,8 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
     super.initState();
     _model = createModel(context, () => AiChatComponentModel());
 
-    _model.textController ??= TextEditingController();
+    _model.textController ??=
+        TextEditingController(text: 'What can I make from a ripe banana?');
     _model.textFieldFocusNode ??= FocusNode();
   }
 
@@ -494,7 +495,7 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                         decoration: InputDecoration(
                           hintText: 'Type something...',
                           hintStyle:
-                              FlutterFlowTheme.of(context).labelLarge.override(
+                              FlutterFlowTheme.of(context).bodyLarge.override(
                                     fontFamily: 'Onest',
                                     letterSpacing: 0.0,
                                     useGoogleFonts: false,

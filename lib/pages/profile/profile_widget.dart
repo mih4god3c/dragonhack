@@ -268,7 +268,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 .secondaryText,
                                       ),
                                       child: Checkbox(
-                                        value: _model.checkboxValue1 ??= true,
+                                        value: _model.checkboxValue1 ??= false,
                                         onChanged: (newValue) async {
                                           setState(() => _model.checkboxValue1 =
                                               newValue!);
@@ -430,7 +430,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 .secondaryText,
                                       ),
                                       child: Checkbox(
-                                        value: _model.checkboxValue4 ??= true,
+                                        value: _model.checkboxValue4 ??= false,
                                         onChanged: (newValue) async {
                                           setState(() => _model.checkboxValue4 =
                                               newValue!);
@@ -484,7 +484,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 .secondaryText,
                                       ),
                                       child: Checkbox(
-                                        value: _model.checkboxValue5 ??= true,
+                                        value: _model.checkboxValue5 ??= false,
                                         onChanged: (newValue) async {
                                           setState(() => _model.checkboxValue5 =
                                               newValue!);

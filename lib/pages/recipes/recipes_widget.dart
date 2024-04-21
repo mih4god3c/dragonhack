@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'recipes_model.dart';
 export 'recipes_model.dart';
 
@@ -172,22 +171,21 @@ class _RecipesWidgetState extends State<RecipesWidget> {
                 ],
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
-                    child: FlutterFlowChoiceChips(
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    FlutterFlowChoiceChips(
                       options: const [
                         ChipData('All'),
-                        ChipData('Vegan', FontAwesomeIcons.leaf),
-                        ChipData('High Protein', FontAwesomeIcons.horse),
-                        ChipData('30min <', Icons.timer_rounded),
-                        ChipData('Ready to go', Icons.check_box),
-                        ChipData('Ingredient', Icons.question_mark)
+                        ChipData('High Protein'),
+                        ChipData('30 min <'),
+                        ChipData('Vegan'),
+                        ChipData('Ready to go'),
+                        ChipData('Ingredient')
                       ],
                       onChanged: (val) => setState(
                           () => _model.choiceChipsValue = val?.firstOrNull),
@@ -204,31 +202,26 @@ class _RecipesWidgetState extends State<RecipesWidget> {
                         iconColor:
                             FlutterFlowTheme.of(context).primaryBackground,
                         iconSize: 0.0,
-                        labelPadding:
-                            const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                        elevation: 4.0,
-                        borderRadius: BorderRadius.circular(8.0),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(16.0),
                       ),
                       unselectedChipStyle: ChipStyle(
                         backgroundColor: FlutterFlowTheme.of(context).tertiary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
-                                  fontFamily: 'Onest',
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: false,
-                                ),
-                        iconColor:
-                            FlutterFlowTheme.of(context).primaryBackground,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .bodyMedium
+                            .override(
+                              fontFamily: 'Onest',
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              letterSpacing: 0.0,
+                              useGoogleFonts: false,
+                            ),
+                        iconColor: FlutterFlowTheme.of(context).tertiaryText,
                         iconSize: 18.0,
-                        labelPadding:
-                            const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                         elevation: 0.0,
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(16.0),
                       ),
                       chipSpacing: 8.0,
-                      rowSpacing: 8.0,
+                      rowSpacing: 12.0,
                       multiselect: false,
                       initialized: _model.choiceChipsValue != null,
                       alignment: WrapAlignment.start,
@@ -238,8 +231,8 @@ class _RecipesWidgetState extends State<RecipesWidget> {
                       ),
                       wrapped: true,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Padding(

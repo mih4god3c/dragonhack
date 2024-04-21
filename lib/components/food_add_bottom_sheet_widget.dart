@@ -168,7 +168,7 @@ class _FoodAddBottomSheetWidgetState extends State<FoodAddBottomSheetWidget> {
                                     child: TextFormField(
                                       controller: _model.textController,
                                       focusNode: _model.textFieldFocusNode,
-                                      autofocus: true,
+                                      autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Quantity',
@@ -227,6 +227,7 @@ class _FoodAddBottomSheetWidgetState extends State<FoodAddBottomSheetWidget> {
                                           .labelLarge
                                           .override(
                                             fontFamily: 'Onest',
+                                            fontSize: 14.0,
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                           ),
@@ -235,7 +236,7 @@ class _FoodAddBottomSheetWidgetState extends State<FoodAddBottomSheetWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         await showModalBottomSheet<bool>(

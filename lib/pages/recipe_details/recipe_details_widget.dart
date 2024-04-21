@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'recipe_details_model.dart';
 export 'recipe_details_model.dart';
 
@@ -244,7 +245,8 @@ class _RecipeDetailsWidgetState extends State<RecipeDetailsWidget> {
                           content: Text(
                             'Succesfully added all items to shopping list!',
                             style: TextStyle(
-                              color: FlutterFlowTheme.of(context).primaryText,
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
                             ),
                           ),
                           duration: const Duration(milliseconds: 3000),
@@ -285,15 +287,78 @@ class _RecipeDetailsWidgetState extends State<RecipeDetailsWidget> {
                   color: FlutterFlowTheme.of(context).customColor3,
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
-                  child: Text(
-                    'Directions',
-                    style: FlutterFlowTheme.of(context).labelMedium.override(
-                          fontFamily: 'Onest',
-                          fontSize: 18.0,
-                          letterSpacing: 0.0,
-                          useGoogleFonts: false,
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
+                        child: Text(
+                          'Directions',
+                          style:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Onest',
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: false,
+                                  ),
                         ),
+                      ),
+                      if (_model.isPlaying)
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 8.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setState(() {
+                                _model.isPlaying = true;
+                              });
+                              _model.soundPlayer ??= AudioPlayer();
+                              if (_model.soundPlayer!.playing) {
+                                await _model.soundPlayer!.stop();
+                              }
+                              _model.soundPlayer!.setVolume(1.0);
+                              _model.soundPlayer!
+                                  .setUrl(recipeDetailsRecipesRow.mp3File!)
+                                  .then((_) => _model.soundPlayer!.play());
+                            },
+                            child: Icon(
+                              Icons.volume_up_rounded,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 32.0,
+                            ),
+                          ),
+                        ),
+                      if (!_model.isPlaying)
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 8.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setState(() {
+                                _model.isPlaying = false;
+                              });
+                              _model.soundPlayer?.stop();
+                            },
+                            child: Icon(
+                              Icons.stop,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 32.0,
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
                 Builder(
@@ -303,6 +368,7 @@ class _RecipeDetailsWidgetState extends State<RecipeDetailsWidget> {
                             [];
                     return ListView.builder(
                       padding: EdgeInsets.zero,
+                      primary: false,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemCount: items.length,

@@ -48,7 +48,7 @@ class _InventoryItemBottomSheetWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 400.0,
+      height: MediaQuery.sizeOf(context).height * 1.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primaryBackground,
         borderRadius: const BorderRadius.only(
@@ -242,6 +242,7 @@ class _InventoryItemBottomSheetWidgetState
                                           .labelLarge
                                           .override(
                                             fontFamily: 'Onest',
+                                            fontSize: 14.0,
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                           ),
