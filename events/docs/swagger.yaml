@@ -1,0 +1,226 @@
+definitions:
+  models.CreateEventRequest:
+    properties:
+      content:
+        type: string
+      type:
+        type: string
+      user_id:
+        type: string
+    required:
+    - content
+    - type
+    - user_id
+    type: object
+  models.UpdateEventRequest:
+    properties:
+      content:
+        type: string
+      type:
+        type: string
+      user_id:
+        type: string
+    type: object
+info:
+  contact:
+    email: rm6551@student.uni-lj.si
+    name: Rok Mokotar
+    url: https://www.linkedin.com/in/mokot/
+  description: Event tracking documentation for the social networking app focused
+    on sharing vibes.
+  title: Event Tracking API Documentation
+  version: "1.0"
+paths:
+  /event-tracking/custom-metrics:
+    get:
+      description: Custom Prometheus metrics
+      operationId: custom-prometheus-metrics
+      produces:
+      - application/json
+      responses: {}
+      summary: Custom Prometheus metrics
+      tags:
+      - metrics
+  /event-tracking/events:
+    get:
+      description: get events
+      operationId: get-events
+      produces:
+      - application/json
+      responses: {}
+      summary: List events
+      tags:
+      - events
+    post:
+      consumes:
+      - application/json
+      description: create event
+      operationId: create-event
+      parameters:
+      - description: Event
+        in: body
+        name: event
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateEventRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create event
+      tags:
+      - events
+  /event-tracking/events/{id}:
+    delete:
+      description: delete event
+      operationId: delete-event
+      parameters:
+      - description: Event ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete event
+      tags:
+      - events
+    get:
+      description: get event
+      operationId: get-event
+      parameters:
+      - description: Event ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Get event
+      tags:
+      - events
+    patch:
+      consumes:
+      - application/json
+      description: update event
+      operationId: update-event
+      parameters:
+      - description: Event ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Event
+        in: body
+        name: event
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateEventRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Update event
+      tags:
+      - events
+  /event-tracking/health:
+    get:
+      description: health check
+      operationId: health-check
+      produces:
+      - application/json
+      responses: {}
+      summary: Health check
+      tags:
+      - health
+  /event-tracking/health/cpu:
+    get:
+      description: cpu health check
+      operationId: health-check-cpu
+      produces:
+      - application/json
+      responses: {}
+      summary: CPU health check
+      tags:
+      - health
+  /event-tracking/health/database:
+    get:
+      description: database health check
+      operationId: health-check-database
+      produces:
+      - application/json
+      responses: {}
+      summary: Database health check
+      tags:
+      - health
+  /event-tracking/health/disk:
+    get:
+      description: disk health check
+      operationId: health-check-disk
+      produces:
+      - application/json
+      responses: {}
+      summary: Disk health check
+      tags:
+      - health
+  /event-tracking/health/general:
+    get:
+      description: general health check
+      operationId: health-check-general
+      produces:
+      - application/json
+      responses: {}
+      summary: General health check
+      tags:
+      - health
+  /event-tracking/health/goroutine:
+    get:
+      description: goroutine health check
+      operationId: health-check-goroutine
+      produces:
+      - application/json
+      responses: {}
+      summary: Goroutine health check
+      tags:
+      - health
+  /event-tracking/health/kafka:
+    get:
+      description: kafka health check
+      operationId: health-check-kafka
+      produces:
+      - application/json
+      responses: {}
+      summary: Kafka health check
+      tags:
+      - health
+  /event-tracking/health/liveness:
+    get:
+      description: liveness health check
+      operationId: health-check-liveness
+      produces:
+      - application/json
+      responses: {}
+      summary: Liveness health check
+      tags:
+      - health
+  /event-tracking/health/readiness:
+    get:
+      description: readiness health check
+      operationId: health-check-readiness
+      produces:
+      - application/json
+      responses: {}
+      summary: Readiness health check
+      tags:
+      - health
+  /event-tracking/metrics:
+    get:
+      description: Prometheus metrics
+      operationId: prometheus-metrics
+      produces:
+      - application/json
+      responses: {}
+      summary: Prometheus metrics
+      tags:
+      - metrics
+swagger: "2.0"

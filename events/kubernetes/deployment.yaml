@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-tracking
+  namespace: vibe-social
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: event-tracking
+  template:
+    metadata:
+      labels:
+        app: event-tracking
+    spec:
+      containers:
+        - name: event-tracking
+          image: vibesocial/event-tracking
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+            - containerPort: 8081
+          env:
+            - name: EVENT_TRACKING_SERVER_MODE
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: EVENT_TRACKING_SERVER_MODE
+            - name: EVENT_TRACKING_HTTP_SERVER_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: EVENT_TRACKING_HTTP_SERVER_PORT
+            - name: EVENT_TRACKING_GRPC_SERVER_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: EVENT_TRACKING_GRPC_SERVER_PORT
+            - name: EVENT_HUB_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: EVENT_HUB_CONNECTION_STRING
+            - name: SUPABASE_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: SUPABASE_DSN
+          resources:
+            limits:
+              cpu: "1.0"
+              memory: "1024Mi"
+            requests:
+              cpu: "0.1"
+              memory: "32Mi"
+          readinessProbe:
+            httpGet:
+              path: /event-tracking/health/ready
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 30
+            successThreshold: 10
+            failureThreshold: 30
+          livenessProbe:
+            httpGet:
+              path: /event-tracking/health/live
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10

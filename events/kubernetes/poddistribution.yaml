@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: event-tracking
+  namespace: vibe-social
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: event-tracking

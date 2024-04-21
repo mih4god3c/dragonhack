@@ -1,0 +1,5 @@
+# Ignore config files
+.env
+
+# Ignore build files
+main

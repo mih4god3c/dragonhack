@@ -1,0 +1,5 @@
+Flask
+pandas
+requests
+Flask-RESTx
+python-dotenv

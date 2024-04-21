@@ -1,0 +1,39 @@
+Main
+-----
+- navigacijo premakni visje (ne sme bit cist na dnu)
+- spacing med 1 in 2 vrstico povecaj
+
+Ingredients
+-----
+- ko selectas item se pojavi nek gumb, za dodajanje v shoping listo
+
+Ko dodas nov item
+- ko naredis nov item, obroba za quantity iz oranzne na modro
+- recept more redirectat na recepte + filtering
+
+Profile
+-----
+- image naj bo samo avatar, odstrani obrobe (isto kot home screen)
+- gumb za sign out popravi, premakni ga visje
+- v glavnem ... popravi profile v celoti
+
+Recepti 
+-----
+- odstrani klukice
+- popravi barve in zmanjsaj na pogledu listi receptov
+- klicaj daj na desno
+
+Pogled recepta
+-----
+- odstrani klicaj
+- popravi listo ingredientov - mogoc probaj z removanem box shadowa
+- gumb add to list manjsi, daj sam ikono z +
+- funkni gumb za add all
+- popravi gumb za dodajanje
+- done -> odstrani crne klukice v check listi + popravi finish recepie
+- notifikacija - daj belo barvo + barvo za success
+
+Inventory:
+- fix overflow v expendu
+- datum odstrani barvo + border naj bo moder
+- datum komponenta - porpavi barve v koledarju

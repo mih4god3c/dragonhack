@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: location-discovery
+  namespace: vibe-social
+spec:
+  selector:
+    matchLabels:
+      app: location-discovery
+  template:
+    metadata:
+      labels:
+        app: location-discovery
+    spec:
+      containers:
+        - name: location-discovery
+          image: vibesocial/location-discovery
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: LOCATION_DISCOVERY_SERVER_MODE
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: LOCATION_DISCOVERY_SERVER_MODE
+            - name: LOCATION_DISCOVERY_HTTP_SERVER_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: LOCATION_DISCOVERY_HTTP_SERVER_PORT
+            - name: IP_2_LOCATION_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: IP_2_LOCATION_TOKEN
+          resources:
+            limits:
+              cpu: "1.0"
+              memory: "1024Mi"
+            requests:
+              cpu: "0.1"
+              memory: "32Mi"
+          readinessProbe:
+            httpGet:
+              path: /location-discovery/health
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 30
+            successThreshold: 10
+            failureThreshold: 30
+          livenessProbe:
+            httpGet:
+              path: /location-discovery/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "/proto";
+
+message Event {
+  string id = 1;
+  string timestamp = 2;
+  string type = 3;
+  string content = 4;
+  string user_id = 5;
+}
+
+service EventService {
+  rpc CreateEvent(Event) returns (Event) {}
+}
+
+enum EventType {
+  UNKNOWN = 0;
+  LOGIN = 1;
+  LOGOUT = 2;
+  REGISTER = 3;
+  PURCHASE = 4;
+  VIEW = 5;
+}

@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: location-discovery
+  namespace: vibe-social
+spec:
+  schedule: "0 12 * * 3"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: location-discovery
+              image: vibesocial/location-discovery
+              imagePullPolicy: Always
+              command: ["python", "/app/ip2location/download.py"]
+              env:
+                - name: LOCATION_DISCOVERY_SERVER_MODE
+                  valueFrom:
+                    secretKeyRef:
+                      name: secrets
+                      key: LOCATION_DISCOVERY_SERVER_MODE
+                - name: LOCATION_DISCOVERY_HTTP_SERVER_PORT
+                  valueFrom:
+                    secretKeyRef:
+                      name: secrets
+                      key: LOCATION_DISCOVERY_HTTP_SERVER_PORT
+                - name: IP_2_LOCATION_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: secrets
+                      key: IP_2_LOCATION_TOKEN
+          restartPolicy: OnFailure

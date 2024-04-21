@@ -1,0 +1,14 @@
+# Ignore config files
+.env
+
+# Ignore python environment
+.venv/
+
+# Ignore all python caches
+__pycache__/
+
+# Ignore ip2location files
+ip2location/*.ZIP
+ip2location/*.BIN
+ip2location/*.CSV
+ip2location/*.TXT

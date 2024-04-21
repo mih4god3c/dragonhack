@@ -1,0 +1,15 @@
+text2speech -> https://platform.openai.com/docs/guides/text-to-speech
+chatgpt -> https://platform.openai.com/docs/api-reference/introduction
+food recognition -> https://huggingface.co/Kaludi/food-category-classification-v2.0
+EAN reader -> https://www.ean-search.org/ean-api-intro.html
+QR code -> https://goqr.me/api/
+RFID scanner -> https://developer.android.com/develop/connectivity/nfc/nfc
+google calendar -> https://developers.google.com/calendar/api/guides/overview
+recepie
+-> https://api-ninjas.com/api/recipe
+-> https://www.themealdb.com/api.php 
+-> https://spoonacular.com/food-api/docs 
+-> https://api2.bigoven.com/web/documentation/recipes X
+-> https://developer.edamam.com/edamam-docs-recipe-api X
+-> https://zestfuldata.com/docs X
+SMS -> https://developer.android.com/reference/android/telephony/SmsManager
